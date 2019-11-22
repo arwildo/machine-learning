@@ -36,5 +36,12 @@ model.fit(train_images, train_labels, epochs=5)
 
 # prediction
 prediction = model.predict(test_images)
-prediction_max = np.argmax(prediction[0])
-print(class_names[prediction_max],", ", prediction_max)
+
+for i in range(5):
+    plt.grid(False)
+    plt.imshow(test_images[i], cmap=plt.cm.binary)
+    plt.xlabel('Actual item: ' + class_names[test_labels[i]])
+    plt.title('Prediction item: ' + class_names[np.argmax(prediction[i])])
+    plt.show()
+
+
