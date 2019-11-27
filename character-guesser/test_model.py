@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+# load test data
 data = tf.keras.datasets.mnist
-
 (x_train, y_train), (x_test, y_test) = data.load_data()
 x_train = tf.keras.utils.normalize(x_train, axis=1)
 x_test = tf.keras.utils.normalize(x_test, axis=1)
@@ -17,6 +17,7 @@ for train in range(len(x_train)):
                 x_train[train][row][x] = 1
 
 
+# load and predict model
 model = tf.keras.models.load_model('char_guesser.model')
 print(len(x_test))
 predictions = model.predict(x_test[:10])
