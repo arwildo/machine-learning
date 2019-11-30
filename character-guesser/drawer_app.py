@@ -23,4 +23,5 @@ class pixel(object):
         i = self.y // 20
         rows = 28
         cols = 28
+        
 

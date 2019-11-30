@@ -1,2 +1,3 @@
 .*.py.swp
 character-guesser/datasets/*
+number-guesser/number-guesser.model/*

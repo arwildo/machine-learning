@@ -15,7 +15,7 @@ model = tf.keras.models.load_model('number_guesser.model')
 # make prediction
 subject = 9
 prediction = model.predict([x_test])
-print('prediction :', np.argmax(prediction[subject]))
+print('Prediction :', np.argmax(prediction[subject]))
 
 # plot prediction
 plt.imshow(x_test[subject], cmap=plt.cm.binary)
