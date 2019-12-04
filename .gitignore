@@ -1,4 +1,4 @@
-.*.py.swp
+*.swp
 character-guesser/datasets/*
 number-guesser/number_guesser.model/*
 binary-classifier/data/*
