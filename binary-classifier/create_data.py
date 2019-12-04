@@ -1,3 +1,4 @@
+#!/bin/python3
 import numpy as np
 import matplotlib.pyplot as plt
 import os 
@@ -8,7 +9,7 @@ import pickle
 
 DATA_DIR = "data/"
 CATEGORIES = ["dog", "cat"]
-IMG_SIZE = 80
+IMG_SIZE = 50
 
 training_data = []
 
@@ -27,6 +28,7 @@ def create_training_data():
                 pass
 
 create_training_data()
+
 # randomize the data order to make reduce model biases
 random.shuffle(training_data)
 
