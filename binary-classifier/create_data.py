@@ -40,7 +40,9 @@ for features, label in training_data:
     X.append(features)
     y.append(label)
 
+# convert into array show can fit into tf
 X = np.array(X).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
+y = np.array(y)
 
 # save data
 pickle_out = open("X.pickle", "wb")

@@ -2,7 +2,12 @@
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten, Conv2D, MaxPooling2D
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dropout
+from tensorflow.keras.layers import Activation
+from tensorflow.keras.layers import Flatten
+from tensorflow.keras.layers import Conv2D
+from tensorflow.keras.layers import MaxPooling2D
 import pickle
 
 
@@ -40,3 +45,6 @@ model.compile(loss = "binary_crossentropy",
 
 # training
 model.fit(X, y, batch_size=32, epochs=5, validation_split=0.1)
+
+# save model
+model.save("binary_classiffier.model")
