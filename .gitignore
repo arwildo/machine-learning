@@ -4,3 +4,6 @@ number-guesser/number_guesser.model/*
 binary-classifier/data/*
 binary-classifier/X.pickle
 binary-classifier/y.pickle
+animal-imgs-clustering/animal_images/
+animal-imgs-clustering/X_train.pickle
+animal-imgs-clustering/y_train.pickle
