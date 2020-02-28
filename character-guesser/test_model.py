@@ -3,7 +3,6 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 # load test data
 data = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = data.load_data()
@@ -16,7 +15,6 @@ for train in range(len(x_train)):
             if x_train[train][row][x] != 0:
                 x_train[train][row][x] = 1
 
-
 # load and predict model
 model = tf.keras.models.load_model('char_guesser.model')
 print(len(x_test))
@@ -28,7 +26,7 @@ for x in range(len(predictions)):
     actual = y_test[x]
     print("Prediction letter = ", guess)
     print("Actual letter = ", actual)
-    
+
     if guess != actual:
         count += 1
 
@@ -36,4 +34,4 @@ for x in range(len(predictions)):
     plt.show()
 
 print("Wrong guesset = ", count, "from ", len(x_test), "test")
-print(str(100 - (count/len(x_test)*100) + '% correct'))
+print(str(100 - (count / len(x_test) * 100) + '% correct'))

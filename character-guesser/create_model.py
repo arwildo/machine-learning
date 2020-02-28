@@ -3,7 +3,6 @@ import tensorflow as tf
 import numpy as np
 import maplotlib.pyplot as plt
 
-
 # load train data
 data = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = data.load_data()
@@ -16,14 +15,12 @@ for train in range(len(x_train)):
             if x_train[train][row][x] != 0:
                 x_train[train][row][x] = 1
 
-
 # model layers
 model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Flatten())
 model.add(tf.keras.layers.Dense(128, activation='relu'))
 model.add(tf.keras.layers.Dense(128, activation='relu'))
 model.add(tf.keras.layers.Dense(10, activation='softmax'))
-
 
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',

@@ -12,8 +12,8 @@ model = tf.keras.models.load_model('number_guesser.model')
 
 # train
 model.compile(optimizer='adam',
-    loss='sparse_categorical_crossentropy',
-    metrics=['accuracy'])
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
 
 model.fit(x_train, y_train, epochs=5)
 

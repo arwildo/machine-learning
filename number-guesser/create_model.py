@@ -8,7 +8,6 @@ mnist = tf.keras.datasets.mnist
 x_train = tf.keras.utils.normalize(x_train, axis=1)
 x_test = tf.keras.utils.normalize(x_test, axis=1)
 
-
 # model layers
 model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Flatten())
@@ -18,8 +17,8 @@ model.add(tf.keras.layers.Dense(10, activation='softmax'))
 
 # train
 model.compile(optimizer='adam',
-    loss='sparse_categorical_crossentropy',
-    metrics=['accuracy'])
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
 
 model.fit(x_train, y_train, epochs=3)
 
@@ -28,4 +27,3 @@ model.fit(x_train, y_train, epochs=3)
 
 # save model
 model.save('number_guesser.model')
-

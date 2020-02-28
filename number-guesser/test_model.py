@@ -12,7 +12,7 @@ x_test = tf.keras.utils.normalize(x_test, axis=1)
 model = tf.keras.models.load_model('number_guesser.model')
 
 # make prediction
-subject = 9 # <--- sub index of mnist datasets
+subject = 9  # <--- sub index of mnist datasets
 prediction = model.predict([x_test])
 print('Prediction :', np.argmax(prediction[subject]))
 

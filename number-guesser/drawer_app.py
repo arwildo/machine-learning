@@ -17,23 +17,24 @@ class pixel(object):
         self.neighbors = []
 
     def draw(self, surface):
-        pygame.draw.rect(surface, self.color, (self.x, self.y,
-            self.x + self.width, self.y + self.height))
+        pygame.draw.rect(
+            surface, self.color,
+            (self.x, self.y, self.x + self.width, self.y + self.height))
 
     def getNeighbors(self, g):
         j = self.x // 20
         i = self.y // 20
         rows = 28
         cols = 28
-       
-        if i < cols -1:
-            self.neighbors.append(g.pixels[i + 1] [j])
-        if i > cols -1:
-            self.neighbors.append(g.pixels[i - 1] [j])
-        if j < rows -1:
+
+        if i < cols - 1:
+            self.neighbors.append(g.pixels[i + 1][j])
+        if i > cols - 1:
+            self.neighbors.append(g.pixels[i - 1][j])
+        if j < rows - 1:
             self.neighbors.append(g.pixels[i][j + 1])
         if j > 0:
-            self.neighbors.append(g.pixels[i] [j - 1])
+            self.neighbors.append(g.pixels[i][j - 1])
 
         if j > 0 and i > 0:
             self.neighbors.append(g.pixels[i - 1][j - 1])
@@ -72,13 +73,14 @@ class grid(object):
         for r in range(self.rows):
             self.pixels.append([])
             for c in range(self.cols):
-                self.pixels[r].append(pixel(x_gap * c, y_gap * r, x_gap, y_gap))
+                self.pixels[r].append(pixel(x_gap * c, y_gap * r, x_gap,
+                                            y_gap))
 
         for r in range(self.rows):
             for c in range(self.cols):
                 self.pixels[r][c].getNeighbors(self)
 
-    def clicked(self, pos): 
+    def clicked(self, pos):
         try:
             t = pos[0]
             w = pos[1]
@@ -97,7 +99,7 @@ class grid(object):
 
         for i in range(len(li)):
             for j in range(len(li[i])):
-                if li[i][j].color == (255,255,255):
+                if li[i][j].color == (255, 255, 255):
                     newMatrix[i].append(0)
                 else:
                     newMatrix[i].append(1)
@@ -141,20 +143,21 @@ def main():
 
                 pos = pygame.mouse.get_pos()
                 clicked = g.clicked(pos)
-                clicked.color = (0,0,0)
+                clicked.color = (0, 0, 0)
                 for n in clicked.neighbors:
-                    n.color = (0,0,0)
+                    n.color = (0, 0, 0)
 
             if pygame.mouse.get_pressed()[2]:
                 try:
                     pos = pygame.mouse.get_pos()
                     clicked = g.clicked(pos)
-                    clicked.color = (255,255,255)
+                    clicked.color = (255, 255, 255)
                 except:
                     pass
 
         g.draw(win)
         pygame.display.update()
+
 
 pygame.init()
 width = height = 560
@@ -163,8 +166,5 @@ pygame.display.set_caption("Number Guesser")
 g = grid(28, 28, width, height)
 main()
 
-
 pygame.quit()
-quit() 
-
-
+quit()

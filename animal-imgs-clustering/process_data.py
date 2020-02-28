@@ -14,7 +14,6 @@ import cv2
 import glob
 import pickle
 
-
 DIR = "./animal_images"
 
 
@@ -30,13 +29,20 @@ def dataset_stats():
             file_names = [file for file in os.listdir(sub_directory)]
             file_count = len(file_names)
             sub_directory_name = os.path.basename(sub_directory)
-            stats.append({ "Code": sub_directory_name[:sub_directory_name.find('-')],
-                            "Image count": file_count,
-                            "Folder name": os.path.basename(sub_directory),
-                            "File names": file_names })
+            stats.append({
+                "Code":
+                sub_directory_name[:sub_directory_name.find('-')],
+                "Image count":
+                file_count,
+                "Folder name":
+                os.path.basename(sub_directory),
+                "File names":
+                file_names
+            })
 
     df = pd.DataFrame(stats)
     return df
+
 
 # print animal_images stats
 dataset = dataset_stats().set_index("Code")
@@ -44,10 +50,10 @@ print(dataset[["Folder name", "Image count"]])
 
 
 def load_images(codes):
-   images = []
-   labels = []
+    images = []
+    labels = []
 
-   for code in codes:
+    for code in codes:
         folder_name = dataset.loc[code]["Folder name"]
 
         for file in dataset.loc[code]["File names"]:
@@ -61,7 +67,7 @@ def load_images(codes):
 
             images.append(image)
             labels.append(code)
-   return images, labels
+    return images, labels
 
 
 # picking 4 animals breeds
@@ -72,7 +78,9 @@ images, labels = load_images(codes)
 def show_random_images(images, labels, number_of_images_to_show=2):
     for code in list(set(labels)):
         indicies = [i for i, label in enumerate(labels) if label == code]
-        random_indicies = [random.choice(indicies) for i in range(number_of_images_to_show)]
+        random_indicies = [
+            random.choice(indicies) for i in range(number_of_images_to_show)
+        ]
         figure, axis = plt.subplots(1, number_of_images_to_show)
 
         print(f"{number_of_images_to_show} random images for code {code}")
@@ -80,6 +88,7 @@ def show_random_images(images, labels, number_of_images_to_show=2):
         for image in range(number_of_images_to_show):
             axis[image].imshow(images[random_indicies[image]])
         plt.show()
+
 
 show_random_images(images, labels)
 
@@ -92,15 +101,19 @@ def normalize_images(images, labels):
 
     return images, labels
 
+
 images, labels = normalize_images(images, labels)
 
 
 # shuffle data for training
 def shuffle_data(images, labels):
     # set aside the testing data for test at the end
-    X_train, X_test, y_train, y_test = train_test_split(images, labels, random_state=728)
+    X_train, X_test, y_train, y_test = train_test_split(images,
+                                                        labels,
+                                                        random_state=728)
 
     return X_train, y_train
+
 
 X_train, y_train = shuffle_data(images, labels)
 print(X_train)
